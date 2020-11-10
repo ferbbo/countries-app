@@ -1,0 +1,12 @@
+
+@import"config.scss";
+
+body {
+  background-color: $VeryLightGrayBg_LM;
+  font-size: 14px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  font-family: 'Nunito Sans', sans-serif;
+  color: $DarkBlueText_LM;
+  margin: 0;
+}
