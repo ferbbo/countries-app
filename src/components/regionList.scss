@@ -1,0 +1,12 @@
+.container-regions{
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-region{
+        border-radius: 5px;
+        box-shadow: 0px 0px 4px  rgba(133, 133, 133, .3);
+        font-size: .8em;
+        grid-area: regions;
+        padding: 0 20px;
+    }
+}

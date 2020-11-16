@@ -1,0 +1,11 @@
+
+.container_home{
+    border: 1px solid red;
+    width: 100%;
+    max-width: 1440px;
+    padding: 40px 50px;
+    display: grid;
+    grid-template-areas: "search  regions" 
+                          "countries countries";
+                          grid-template-columns: 1fr 1fr;
+}
