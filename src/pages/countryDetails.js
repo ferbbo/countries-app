@@ -6,7 +6,6 @@ import "./countryDetails.scss";
 class CountryDetails extends Component {
   state = {
     country: [],
-    name: "Colombia",
     borderCountries: [],
   };
   componentDidMount() {
@@ -14,22 +13,26 @@ class CountryDetails extends Component {
   }
   FecthData = async () => {
     try {
-      const {
-        data: { 0: country },
-      } = await axios.get(`https://restcountries.eu/rest/v2/name/Colombia`);
-      this.setState({ country: country });
+       const code = this.props.history.location.search.split("=")[1];
+      const 
+        response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
+        const country = await response.json()
 
-      const StringBorder = country.borders.reduce((a, b) => a.concat(";", b));
-      console.log(StringBorder);
-
-      const { data: borders } = await axios.get(
-        `https://restcountries.eu/rest/v2/alpha?codes=${StringBorder}`
-      );
-      this.setState({
-        borderCountries: borders,
-      });
+        if(country.borders.length !== 0){
+          const StringBorder = country.borders.reduce((a, b) => a.concat(";", b));
+          const { data: borders } = await axios.get(
+            `https://restcountries.eu/rest/v2/alpha?codes=${StringBorder}`
+          );
+          this.setState({
+            country: country,
+            borderCountries: borders,
+          });
+        }else{
+          this.setState({
+            country: country,
+          });
+        }
     } catch (error) {
-      //   alert(error);
       console.error(error);
     }
   };
@@ -39,11 +42,17 @@ class CountryDetails extends Component {
     const borderCountries = this.state.borderCountries;
     console.log(country);
     console.log(borderCountries);
-    if (country.length === 0 || borderCountries.length === 0) {
+    if (country.length === 0) {
       return null;
     }
     return (
       <div className="country__container">
+        <div className="w-100">
+          <button className="btn-goBack" onClick={this.props.history.goBack}>
+            <i className="fas fa-arrow-left"></i>Back
+          </button>
+        </div>
+
         <div className="country__details">
           <figure className="flag__container">
             <img
@@ -53,7 +62,7 @@ class CountryDetails extends Component {
             />
           </figure>
           <div className="country__description">
-    <h3 className="country__description-name">{country.name}</h3>
+            <h3 className="country__description-name">{country.name}</h3>
             <div className="row">
               <div className="col-6">
                 <h6 className="country__content">
@@ -85,27 +94,37 @@ class CountryDetails extends Component {
                 </h6>
                 <h6 className="country__content">
                   Currencies:
-                  <p className="country__results">{country.currencies[0].name}</p>
+                  <p className="country__results">
+                    {country.currencies[0].name}
+                  </p>
                 </h6>
                 <h6 className="country__content">
                   Languages:
-                  <p className="country__results">{country.languages[0].name}</p>
+                  <p className="country__results">
+                    {country.languages[0].name}
+                  </p>
                 </h6>
               </div>
             </div>
             <div className="country__borders-container">
               <h6>Border Countries:</h6>
               <div className="country__borders-countries">
-                {borderCountries.map((border) => (
+                {borderCountries.length !== 0 ?
+                borderCountries.map((border) => (
                   <Link
                     className="border-country"
                     exact="true"
-                    to="/country"
+                    to={{
+                      pathname:"/country",
+                      search:`?code=${border.alpha2Code}`
+                    }}
                     key={border.alpha2Code}
                   >
                     {border.nativeName}
                   </Link>
-                ))}
+                )):
+                null
+              }
               </div>
             </div>
           </div>
