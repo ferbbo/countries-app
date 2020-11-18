@@ -5,7 +5,7 @@ function Header(props) {
   return (
     <Fragment>
       <header className="header">
-        <h3>Where in the world?</h3>
+        <h5>Where in the world?</h5>
         <BtnDarkMode />
       </header>
     </Fragment>

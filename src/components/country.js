@@ -1,30 +1,29 @@
-import React from 'react'
+import React ,{ Fragment }from 'react'
+
 import './country.scss'
 const Country = (props) =>(
+   <Fragment>
+       <figure>
+        <img className="img-flag img-fluid" src={props.info.flag} alt={props.info.name} />
+       </figure>
 
-<div className="container-country">
+    <div className="details__container">
+    <h6 className="name-country">{props.info.name}</h6>
+      <div className="details__description">
+        <div className="details__description__container">
+          <h6 className="details__description__items">Population:</h6>
+          <h6 className="details__description__items">Region:</h6>
+          <h6 className="details__description__items">Capital:</h6>
+        </div>
+        <div className="details__content__container">
+<p className="details__content">{props.info.population}</p>
+<p className="details__content">{props.info.region}</p>
+          <p className="details__content">{props.info.capital}</p>
+        </div>
+      </div>
+    </div>
+   </Fragment>
 
-    <div className="country">
-        <img  className="img-fluid"src="" alt=""/>
-        <div className="details__container">
-            <h3 className="name-country"></h3>
-            <div className="details__description">
-
-            <div className="details__description__container">
-                <h5 className="details__description">Population:</h5>
-                <h5 className="details__description">Region:</h5>
-                <h5 className="details__description">Capital:</h5>
-
-            </div>
-            <div  className="details__content__container">
-                
-                <p className="details__content"></p>
-                <p className="details__content"></p>
-                <p className="details__content"></p>
-            </div>
-            </div>
-            </div>
-            </div>
-</div>
 )
+
 export default Country

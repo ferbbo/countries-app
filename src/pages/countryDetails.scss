@@ -1,0 +1,64 @@
+@import '../config.scss';
+.country{
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em 4em ;
+    }
+    &__details{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+
+    .flag{
+        &__container{
+            width: 30%;
+        }
+    }
+    &__description{
+        width: calc(70%  - 70px );
+        margin-left: 70px;
+    }
+    &__description-name{
+        margin-bottom: 1.5em;
+        font-weight: 800;
+        text-transform: capitalize;
+    }
+    &__content{
+        font-weight: 600;
+        font-size: .8em;
+        display: flex;
+
+    }
+    &__results{
+        font-weight: 300;
+        margin-left: 5px;
+    }
+&__borders-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h6{
+        margin: 0 5px 0 0;
+        font-weight: 600;
+        font-size: .9em;
+    }
+}
+&__borders-countries{
+    display: flex;
+    justify-content: space-between;
+    .border-country{
+        text-decoration: none;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px  rgba(133, 133, 133,.5) ;
+        padding: 5px 1.1em;
+        color:$DarkGrayInput_LM;
+        font-size: .9em;
+        margin-right: 5px;
+    }
+}
+}
