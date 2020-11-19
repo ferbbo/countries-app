@@ -13,25 +13,26 @@ class CountryDetails extends Component {
   }
   FecthData = async () => {
     try {
-       const code = this.props.history.location.search.split("=")[1];
-      const 
-        response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
-        const country = await response.json()
+      const code = this.props.history.location.search.split("=")[1];
+      const response = await fetch(
+        `https://restcountries.eu/rest/v2/alpha/${code}`
+      );
+      const country = await response.json();
 
-        if(country.borders.length !== 0){
-          const StringBorder = country.borders.reduce((a, b) => a.concat(";", b));
-          const { data: borders } = await axios.get(
-            `https://restcountries.eu/rest/v2/alpha?codes=${StringBorder}`
-          );
-          this.setState({
-            country: country,
-            borderCountries: borders,
-          });
-        }else{
-          this.setState({
-            country: country,
-          });
-        }
+      if (country.borders.length !== 0) {
+        const StringBorder = country.borders.reduce((a, b) => a.concat(";", b));
+        const { data: borders } = await axios.get(
+          `https://restcountries.eu/rest/v2/alpha?codes=${StringBorder}`
+        );
+        this.setState({
+          country: country,
+          borderCountries: borders,
+        });
+      } else {
+        this.setState({
+          country: country,
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -109,22 +110,21 @@ class CountryDetails extends Component {
             <div className="country__borders-container">
               <h6>Border Countries:</h6>
               <div className="country__borders-countries">
-                {borderCountries.length !== 0 ?
-                borderCountries.map((border) => (
-                  <Link
-                    className="border-country"
-                    exact="true"
-                    to={{
-                      pathname:"/country",
-                      search:`?code=${border.alpha2Code}`
-                    }}
-                    key={border.alpha2Code}
-                  >
-                    {border.nativeName}
-                  </Link>
-                )):
-                null
-              }
+                {borderCountries.length !== 0
+                  ? borderCountries.map((border) => (
+                      <Link
+                        className="border-country"
+                        exact="true"
+                        to={{
+                          pathname: "/country",
+                          search: `?code=${border.alpha2Code}`,
+                        }}
+                        key={border.alpha2Code}
+                      >
+                        {border.nativeName}
+                      </Link>
+                    ))
+                  : null}
               </div>
             </div>
           </div>

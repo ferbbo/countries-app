@@ -35,27 +35,35 @@ class Home extends Component {
   };
 
   //fetch country trounght input search
-  FetchCountry =  async (query) => {
+  FetchCountry =  async (query, enable) => {
     try {
-      const response = await axios.get(`https://restcountries.eu/rest/v2/name/${query}`) 
-      this.setState({country:response.data})
-      this.containerSearchCountry.style.display = 'block'
+      const {data:{0: data}}= await axios.get(`https://restcountries.eu/rest/v2/name/${query}`) 
+      this.setState({country:data})
+      this.handleResultSearch(enable)
     } catch (error) {
-      alert(error)
+      alert('Country not Found!!')
     }
    
     }
+  handleResultSearch = (enable) =>{
+    if(enable){
+      this.containerSearchCountry.style.display = 'block'
+    }else {
+      this.containerSearchCountry.style.display = 'none'
+    }
+  }
+
 
   render() {
     const country =this.state.country
     console.log(this.state.countries);
-    console.log(this.state.country)
+    console.log(country)
     return (
       <div className="container_home">
-        <InputSearch getCountry={this.FetchCountry} />
+        <InputSearch getCountry={this.FetchCountry} onEnable={this.handleResultSearch} />
        <div id="search-country" className="search-country">
          <div className ="country">
-          {country.length !== 0 ? <Country info={this.state.country}/>:null}
+          {country.length !== 0 ? <Country info={country}/>:null}
          </div>
 
         </div>
