@@ -20,7 +20,19 @@ module.exports={
                 test:/\.(css|sass|scss)$/,
                 exclude: /node_modules/,
                 use:[CssMiniExtractPlugin.loader,'css-loader','sass-loader']
-            }
+            },
+            {
+                test: /\.(png|jpg|jpeg)$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: "file-loader",
+                  options: {
+                    name: "[name].[hash].[ext]",
+                    outputPath: "images/",
+                    useRelativePath: true,
+                  },
+                },
+              },
         ]
     },
     plugins:[
