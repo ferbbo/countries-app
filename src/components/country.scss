@@ -15,6 +15,9 @@
     margin: 0 2em 3em;
     padding: 0;
     color: $DarkBlueText_LM;
+    &:hover {
+      text-decoration: none;
+    }
     figure {
       margin: 0;
       height: 50%;

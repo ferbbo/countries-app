@@ -27,6 +27,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash].[ext]",
+            outputPath: "images/",
+            useRelativePath: true,
+          },
+        },
+      },
     ],
   },
 

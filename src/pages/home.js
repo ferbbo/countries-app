@@ -6,6 +6,7 @@ import RegionList from "../components/regionList";
 import Countries from "../components/countries";
 import Country from '../components/country'
 import axios from "axios";
+import notFind  from '../images/notFind.png'
 class Home extends Component {
   state = {
     countries: [],
@@ -41,7 +42,9 @@ class Home extends Component {
       this.setState({country:data})
       this.handleResultSearch(enable)
     } catch (error) {
-      alert('Country not Found!!')
+      $('#alert-search').modal({
+        show: true
+      })
     }
    
     }
@@ -53,11 +56,33 @@ class Home extends Component {
     }
   }
 
-
+  
   render() {
+    const alert = (
+      <div className="modal" tabIndex="-1" role="dialog" id ="alert-search">
+    <div className="modal-dialog" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div className="modal-body">
+          <figure className="d-flex justify-content-center">
+          <img className="img-fluid w-50 h-50" src={notFind} alt="img-notFind"/>
+
+          </figure>
+          <h1 className="modal-title text-center">Upps...!</h1>
+          <h6 className="text-center">We didn't have find nothing! </h6>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    )
     const country =this.state.country
-    console.log(this.state.countries);
-    console.log(country)
     return (
       <div className="container_home">
         <InputSearch getCountry={this.FetchCountry} onEnable={this.handleResultSearch} />
@@ -69,6 +94,7 @@ class Home extends Component {
         </div>
         <RegionList handleRegion={this.FetchRegions} />
         <Countries countries={this.state.countries} />
+      {alert}
       </div>
     );
   }
