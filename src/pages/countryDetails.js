@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import axios from "axios";
 
 import "./countryDetails.scss";
@@ -64,8 +65,8 @@ class CountryDetails extends Component {
           </figure>
           <div className="country__description">
             <h3 className="country__description-name">{country.name}</h3>
-            <div className="row">
-              <div className="col-6">
+            <div className="row row__container">
+              <div className="col-6 col__container">
                 <h6 className="country__content">
                   Native Name:
                   <p className="country__results">{country.nativeName}</p>
@@ -88,7 +89,7 @@ class CountryDetails extends Component {
                 </h6>
               </div>
 
-              <div className="col-6">
+              <div className="col-6 col__container">
                 <h6 className="country__content">
                   Top Level Domain:
                   <p className="country__results">{country.topLevelDomain}</p>
@@ -114,10 +115,10 @@ class CountryDetails extends Component {
                   ? borderCountries.map((border) => (
                       <Link
                         className="border-country"
-                        exact="true"
                         to={{
                           pathname: "/country",
                           search: `?code=${border.alpha2Code}`,
+                          state: { fromDashboard: true },
                         }}
                         key={border.alpha2Code}
                       >

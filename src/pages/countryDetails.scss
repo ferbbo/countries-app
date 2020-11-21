@@ -1,79 +1,110 @@
-@import '../config.scss';
-.country{
-    &__container{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        padding: 2em 4em ;
+@import "../config.scss";
+.country {
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 4em;
 
-        .btn-goBack{
-                    border: 0;
-                    border-radius: 5px;
-                    box-shadow: 0px 0px 3px  rgba(133, 133, 133,.5) ;            
-                    padding: 5px 2.5em;
-                    margin-bottom: 4em;
-                    margin-left: 5em;
-                    color: $DarkBlueText_LM;
-                    .fa-arrow-left{
-                        color: $DarkBlueText_LM;
-                        margin-right: 1em;
-                    }
-                }    
+    .btn-goBack {
+      border: 0;
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px rgba(133, 133, 133, 0.5);
+      padding: 5px 2.5em;
+      margin-bottom: 4em;
+      margin-left: 5em;
+      color: $DarkBlueText_LM;
+      .fa-arrow-left {
+        color: $DarkBlueText_LM;
+        margin-right: 1em;
+      }
     }
-    &__details{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-    }
+  }
 
-    .flag{
-        &__container{
-            width: 30%;
-        }
+  &__details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    @include media390 {
+      flex-direction: column;
+      width: 100%;
     }
-    &__description{
-        width: calc(70%  - 70px );
-        margin-left: 70px;
-    }
-    &__description-name{
-        margin-bottom: 1.5em;
-        font-weight: 800;
-        text-transform: capitalize;
-    }
-    &__content{
-        font-weight: 600;
-        font-size: .8em;
-        display: flex;
+  }
 
+  .flag {
+    &__container {
+      width: 30%;
+      @include media390 {
+        width: 100%;
+      }
     }
-    &__results{
-        font-weight: 300;
-        margin-left: 5px;
+  }
+  &__description {
+    width: calc(70% - 70px);
+    margin-left: 70px;
+    @include media390 {
+      width: 100% ;
+      margin-left: 0;
+      .row{
+          &__container{
+              flex-direction: column;
+          }
+          .col{
+              &__container{
+                  max-width: 100%;
+              }
+          }
+      }
     }
-&__borders-container{
+  }
+  &__description-name {
+    margin-bottom: 1.5em;
+    font-weight: 800;
+    text-transform: capitalize;
+  }
+  &__content {
+    font-weight: 600;
+    font-size: 0.8em;
+    display: flex;
+  }
+  &__results {
+    font-weight: 300;
+    margin-left: 5px;
+  }
+  &__borders-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    h6{
-        margin: 0 5px 0 0;
-        font-weight: 600;
-        font-size: .9em;
+    h6 {
+      margin: 0 5px 0 0;
+      font-weight: 600;
+      font-size: 0.9em;
+      @include media390{
+          margin-bottom: 20px;
+      }
     }
-}
-&__borders-countries{
+    @include media390{
+        flex-direction: column;
+    }
+  }
+  &__borders-countries {
     display: flex;
-    justify-content: space-between;
-    .border-country{
-        text-decoration: none;
-        border: 0;
-        border-radius: 5px;
-        box-shadow: 0px 0px 3px  rgba(133, 133, 133,.5) ;
-        padding: 5px 1.1em;
-        color:$DarkGrayInput_LM;
-        font-size: .9em;
-        margin-right: 5px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .border-country {
+      text-decoration: none;
+      border: 0;
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px rgba(133, 133, 133, 0.5);
+      padding: 5px 1.1em;
+      color: $DarkGrayInput_LM;
+      font-size: 0.9em;
+      margin-right: 5px;
+      @include media390{
+        margin-bottom: 10px;
     }
+  }
 }
 }

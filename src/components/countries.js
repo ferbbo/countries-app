@@ -8,7 +8,6 @@ const Countries = (props) => (
   <div className="container-country">
     {props.countries.map((country) => (
       <Link
-        exact="true"
         to={{
           pathname: "/country",
           search: `?code=${country.alpha3Code}`,
