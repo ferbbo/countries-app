@@ -1,21 +1,19 @@
 import React, { Component } from "react";
 import "./home.scss";
 
-import InputSearch from "../components/inputSearch";
+import Search from "../components/Search";
 import RegionList from "../components/regionList";
 import Countries from "../components/countries";
-import Country from "../components/country";
 import axios from "axios";
 import notFind from "../images/notFind.png";
 class Home extends Component {
   state = {
     countries: [],
-    country: [],
   };
   componentDidMount() {
-    this.containerSearchCountry = document.getElementById("search-country");
     this.FecthData();
   }
+
   //fetch all Countries
   FecthData = async () => {
     const { data } = await axios.get("https://restcountries.eu/rest/v2/all");
@@ -33,28 +31,6 @@ class Home extends Component {
     this.setState({
       countries: response,
     });
-  };
-
-  //fetch country trounght input search
-  FetchCountry = async (query, enable) => {
-    try {
-      const {
-        data: { 0: data },
-      } = await axios.get(`https://restcountries.eu/rest/v2/name/${query}`);
-      this.setState({ country: data });
-      this.handleResultSearch(enable);
-    } catch (error) {
-      $("#alert-search").modal({
-        show: true,
-      });
-    }
-  };
-  handleResultSearch = (enable) => {
-    if (enable) {
-      this.containerSearchCountry.style.display = "block";
-    } else {
-      this.containerSearchCountry.style.display = "none";
-    }
   };
 
   render() {
@@ -96,18 +72,9 @@ class Home extends Component {
         </div>
       </div>
     );
-    const country = this.state.country;
     return (
       <div className="container_home">
-        <InputSearch
-          getCountry={this.FetchCountry}
-          onEnable={this.handleResultSearch}
-        />
-        <div id="search-country" className="search-country">
-          <div className="country">
-            {country.length !== 0 ? <Country info={country} /> : null}
-          </div>
-        </div>
+        <Search/>
         <RegionList handleRegion={this.FetchRegions} />
         <Countries countries={this.state.countries} />
         {alert}

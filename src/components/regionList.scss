@@ -1,15 +1,21 @@
-.container-regions{
-    display: flex;
-    justify-content: flex-end;
+@import "../config.scss";
+.container-regions {
+  display: flex;
+  justify-content: flex-end;
 
+  @include media594 {
+    grid-area: regions;
+    justify-content: flex-start;
+    margin-top: 1.5em;
+  }
 
-    .btn-region{
-        border-radius: 5px;
-        box-shadow: 0px 0px 4px  rgba(133, 133, 133, .3);
-        font-size: .8em;
-        grid-area: regions;
-        padding: 0 20px;
-        margin-right: 2em;
-        height: 38px;
-    }
+  .btn-region {
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(133, 133, 133, 0.3);
+    font-size: 0.8em;
+    grid-area: regions;
+    padding: 0 20px;
+    margin-right: 2em;
+    height: 38px;
+  }
 }

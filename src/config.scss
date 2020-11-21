@@ -5,4 +5,13 @@ $DarkGrayInput_LM: hsl(0, 0%, 52%);
 $VeryLightGrayBg_LM: hsl(0, 0%, 98%);
 $WhiteText-DM_El-lM: hsl(0, 0%, 100%);
 
+//Media Queries
+@mixin media594 {
 
+    @media(max-width:594px){@content}
+    
+};
+
+@mixin media390 {
+    @media (max-width: 390px) {@content}
+}
