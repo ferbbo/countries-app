@@ -1,5 +1,10 @@
-.btnDarkMode{
-    border: 0;
-    background-color: transparent;
-    display: none;
+.btnDarkMode {
+  border: 0;
+  background-color: transparent;
+  display: block;
+  height: 40px;
+  outline: 0;
+  &:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
 }

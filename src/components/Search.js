@@ -44,7 +44,7 @@ function InputSearch(props) {
       const {
         data: { 0: data },
       } = await axios.get(`https://restcountries.eu/rest/v2/name/${query}`);
-       setCountry(data);
+      setCountry(data);
       HandleResultSearch(enable);
     } catch (error) {
       $("#alert-search").modal({
@@ -52,20 +52,33 @@ function InputSearch(props) {
       });
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     if (query.length === 0) {
       HandleResultSearch(false);
     }
-  },[query])
+  }, [query]);
 
   return (
     <Fragment>
-      <div className="search">
+      <div
+        className="search"
+      >
         <div className="input-group container_search">
-          <div className="input-group-prepend py-2 px-3">
-            <i className="fas fa-search icon-search"></i>
+          <div 
+          style={{
+            backgroundColor: props.theme.fontBackground,
+          }}
+          className="input-group-prepend py-2 px-3">
+            <i
+              style={{ color: props.theme.colortext }}
+              className="fas fa-search icon-search"
+            ></i>
           </div>
           <input
+          style={{
+            backgroundColor: props.theme.fontBackground,
+            color: props.theme.colortext,
+          }}
             type="search"
             name="search"
             id="input-search"

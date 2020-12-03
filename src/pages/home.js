@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./home.scss";
+import { ThemeContext } from "../themes/themes-context";
 
 import Search from "../components/Search";
 import RegionList from "../components/regionList";
@@ -72,15 +73,19 @@ class Home extends Component {
         </div>
       </div>
     );
+    let { theme } = this.context;
     return (
-      <div className="container_home">
-        <Search/>
-        <RegionList handleRegion={this.FetchRegions} />
-        <Countries countries={this.state.countries} />
+      <div
+        style={{ backgroundColor: theme.background }}
+        className="container_home"
+      >
+        <Search theme={theme} />
+        <RegionList handleRegion={this.FetchRegions} theme={theme} />
+        <Countries countries={this.state.countries} theme={theme} />
         {alert}
       </div>
     );
   }
 }
-
+Home.contextType = ThemeContext;
 export default Home;

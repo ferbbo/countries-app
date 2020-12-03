@@ -1,17 +1,19 @@
-$DarkBlueEl_DM: hsl(208, 23%, 22%);
-$DarkBlueBg_DM: hsl(207, 26%, 17%);
+$DarkBlueEl_DM: #2b3945;
+$DarkBlueBg_DM: #202c37;
 $DarkBlueText_LM: hsl(200, 15%, 8%);
 $DarkGrayInput_LM: hsl(0, 0%, 52%);
 $VeryLightGrayBg_LM: hsl(0, 0%, 98%);
-$WhiteText-DM_El-lM: hsl(0, 0%, 100%);
+$WhiteText-DM_El-lM: #ffffff;
 
 //Media Queries
 @mixin media594 {
-
-    @media(max-width:594px){@content}
-    
-};
+  @media (max-width: 594px) {
+    @content;
+  }
+}
 
 @mixin media390 {
-    @media (max-width: 390px) {@content}
+  @media (max-width: 390px) {
+    @content;
+  }
 }

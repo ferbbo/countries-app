@@ -15,13 +15,12 @@
       "country    "
       "countries";
     grid-template-columns: 1fr;
-    width: calc(100% - 100px);
-    margin: 0 auto;
-    padding: 40px 0;
+    margin: 0;
+    padding: 40px 15px;
   }
 
   .container-country {
-    @include media594{
+    @include media594 {
       justify-content: center;
     }
     .country {

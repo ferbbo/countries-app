@@ -1,12 +1,23 @@
-import React, { Fragment } from "react";
+import React , {useContext}from "react";
+import { ThemeContext } from "../themes/themes-context";
 import "./btnDarkMode.scss";
 function BtnDarkMode() {
+  const themes = useContext(ThemeContext)
   return (
-    <Fragment>
-      <button className="btnDarkMode">
-        <i className="far fa-moon"></i> Dark Mode
-      </button>
-    </Fragment>
+    <ThemeContext.Consumer>
+      {({ ToogleTheme }) => (
+        <button
+          style={{
+            color: themes.theme.colortext,
+            borderColor: themes.theme.colortext, 
+          }}
+          onClick={ToogleTheme}
+          className="btnDarkMode"
+        >
+          <i className="far fa-moon"></i> Dark Mode
+        </button>
+      )}
+    </ThemeContext.Consumer>
   );
 }
 

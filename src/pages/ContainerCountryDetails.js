@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CountryDetails from "../components/countryDetails";
+import{ThemeContext} from '../themes/themes-context'
 class ContainerCountryDetails extends Component {
   state = {
     country: [],
@@ -43,6 +44,7 @@ class ContainerCountryDetails extends Component {
   render() {
     const country = this.state.country;
     let code = this.UseQuery();
+    let {theme} = this.context
     const borderCountries = this.state.borderCountries;
     if (country.length === 0) {
       return null;
@@ -53,8 +55,10 @@ class ContainerCountryDetails extends Component {
         onFetch={this.FecthData}
         codeCountry={code.get('code')}
         borders={borderCountries}
+        theme = {theme}
       />
     );
   }
 }
+ContainerCountryDetails.contextType = ThemeContext
 export default ContainerCountryDetails;

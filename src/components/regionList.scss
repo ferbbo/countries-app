@@ -2,7 +2,6 @@
 .container-regions {
   display: flex;
   justify-content: flex-end;
-
   @include media594 {
     grid-area: regions;
     justify-content: flex-start;

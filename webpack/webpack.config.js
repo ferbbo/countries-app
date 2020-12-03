@@ -6,6 +6,7 @@ module.exports = {
   entry: { app: "./src/index.js" },
   output: {
     filename: "[name].[hash].js",
+    chunkFilename: "[name].bundle.js",
     path: path.resolve(__dirname, "../public"),
   },
   mode: "production",
@@ -51,11 +52,7 @@ module.exports = {
       },
     }),
     new CssMiniExtractPlugin({
-      filename: "[name].css",
+      filename: "[name].[contenthash].css",
     }),
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [new CssMiniExtractPlugin()],
-  },
 };

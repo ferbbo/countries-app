@@ -7,14 +7,24 @@ function CountryDetails(props) {
     useEffect(()=>{
         props.onFetch()},[props.codeCountry])
   return (
-    <div className="country__container">
+    <div 
+   className="country__container"
+   style={{
+    backgroundColor: props.theme.background,
+    color: props.theme.colortext,
+  }}
+   >
       <div className="w-100">
-        <button className="btn-goBack" onClick={history.goBack}>
-          <i className="fas fa-arrow-left"></i>Back
+        <button 
+        style={{backgroundColor:props.theme.fontBackground, color:props.colortext}}
+        className="btn-goBack" onClick={history.goBack}>
+          <i 
+          style={{color: props.theme.colortext}}
+          className="fas fa-arrow-left"></i>Back
         </button>
       </div>
 
-      <div className="country__details">
+      <div style={{backgroundColor:props.theme.background}} className="country__details">
         <figure className="flag__container">
           <img
             className="img-fluid flag"

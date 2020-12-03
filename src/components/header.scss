@@ -5,12 +5,25 @@
   align-items: center;
   background-color: $WhiteText-DM_El-lM;
   padding: 1.5em 6em;
-  box-shadow: 0px 2px 3px rgba(0,0,0,.2);
-  @include media390{
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  @include media390 {
     padding: 1.5em 0;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 1.5em 1em;
   }
-  h5{
-      font-weight: 800;
+  .logo-title {
+    display: flex;
+    align-items: center;
+    @include media390 {
+      display: block;
+    }
+  }
+  h5 {
+    font-weight: 800;
+    margin: 0 0 0 20px;
+    @include media390 {
+      font-size: 1.2em;
+      margin: 0;
+    }
   }
 }

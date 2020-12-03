@@ -14,8 +14,12 @@ const Countries = (props) => (
         }}
         className="country"
         key={country.alpha2Code}
+        style={{
+          backgroundColor: props.theme.fontBackground,
+          color: props.theme.colortext,
+        }}
       >
-        <Country info={country} />
+        <Country theme={props.theme} info={country} />
       </Link>
     ))}
   </div>
