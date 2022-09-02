@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: $WhiteText-DM_El-lM;
-  padding: 1.5em 6em;
+  padding: 10px 6em;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
   @include media390 {
     padding: 1.5em 0;
@@ -12,6 +12,9 @@
     padding: 1.5em 1em;
   }
   .logo-title {
+    img {
+      width: 100px;
+    }
     display: flex;
     align-items: center;
     @include media390 {
@@ -21,6 +24,7 @@
   h5 {
     font-weight: 800;
     margin: 0 0 0 20px;
+    color: $DarkBlueEl_DM;
     @include media390 {
       font-size: 1.2em;
       margin: 0;
