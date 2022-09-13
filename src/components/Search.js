@@ -1,60 +1,53 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./Search.scss";
 import Country from "./country";
-import axios from "axios";
 
-function InputSearch(props) {
-  const [query, setQuery] = useState(0);
+import ApiRepository from "../repositories/ApiRepository";
+
+const InputSearch = (props) =>  {
+  const [query, setQuery] = useState('');
   const [error, setError] = useState(false);
   const [country, setCountry] = useState([]);
 
   const $inputSearch = document.getElementById("input-search");
-  const $containerSearchCountry = document.getElementById("search-country");
 
-  const HandleChange = (e) => {
-    setQuery(e.target.value);
+  const HandleChange = ({ target: { value } }) => {
+    if (value) {
+      setError(false);
+      $inputSearch.classList.remove("error");
+    } else if (!value) {
+      setError(true);
+      $inputSearch.classList.add("error");
+    }
+    setQuery(value);
   };
 
-  const GetCountry = (e) => {
-    if (e.charCode === 13) {
+  const GetCountry = async (e) => {
+    if (e.key === 'Enter') {
       if (typeof query === "string" && query.length !== 0) {
-        FetchCountry(query, true);
+        try {
+          const { data:  [ country ] } =  await ApiRepository.getCountryByName(query);
+          setCountry(country);
+        } catch (e) {
+          if (e.status === 404) {
+            $("#alert-search").modal({
+              show: true,
+            });
+          }
+          console.error(e);
+        }
         if (error) {
-          setError(false);
-          $inputSearch.classList.remove("error");
+          
         }
       } else {
-        setError(true);
-        $inputSearch.classList.add("error");
+       
       }
     }
   };
 
-  const HandleResultSearch = (enable) => {
-    if (enable) {
-      $containerSearchCountry.style.display = "block";
-    } else {
-      $containerSearchCountry.style.display = "none";
-    }
-  };
-
-  //fetch country trounght input search
-  const FetchCountry = async (query, enable) => {
-    try {
-      const {
-        data: { 0: data },
-      } = await axios.get(`https://restcountries.eu/rest/v2/name/${query}`);
-      setCountry(data);
-      HandleResultSearch(enable);
-    } catch (error) {
-      $("#alert-search").modal({
-        show: true,
-      });
-    }
-  };
   useEffect(() => {
     if (query.length === 0) {
-      HandleResultSearch(false);
+      setCountry([]);
     }
   }, [query]);
 
@@ -94,11 +87,17 @@ function InputSearch(props) {
           <span className="search__error">Enter a Country, please!</span>
         )}
       </div>
-      <div id="search-country" className="search-country">
-        <div className="country">
-          {country.length !== 0 ? <Country info={country} /> : null}
+      { Object.keys(country).length  ?
+        <div
+        id="search-country" 
+        className="search-country">
+          <div className="country">
+            <Country info={country} />
+          </div>
         </div>
-      </div>
+        : null
+      }
+
     </Fragment>
   );
 }

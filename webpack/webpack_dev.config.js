@@ -23,6 +23,14 @@ module.exports = {
         use: "babel-loader",
       },
       {
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader'
+					}
+				]
+			},
+      {
         test: /\.(sass|css|scss)$/,
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
@@ -47,4 +55,7 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
+  devServer: {
+		historyApiFallback: true,
+	}
 };
