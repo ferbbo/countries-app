@@ -61,11 +61,11 @@ function CountryDetails(props) {
             <div className="col-6 col__container">
               <h6 className="country__content">
                 Top Level Domain:
-                <p className="country__results">{props.country.topLevelDomain}</p>
+                <p className="country__results">{props.country.topLevelDomain[0]}</p>
               </h6>
               <h6 className="country__content">
                 Currencies:
-                <p className="country__results">{props.country.currencies[0].name}</p>
+                <p className="country__results">{props.country.currencies[0].code}</p>
               </h6>
               <h6 className="country__content">
                 Languages:
@@ -82,9 +82,9 @@ function CountryDetails(props) {
                       className="border-country"
                       to={{
                         pathname: "/country",
-                        search: `?code=${border.alpha2Code}`,
+                        search: `?code=${border.alpha3Code}`,
                       }}
-                      key={border.alpha2Code}
+                      key={border.alpha3Code}
                     >
                       {border.name}
                     </Link>

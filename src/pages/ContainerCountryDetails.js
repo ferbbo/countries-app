@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CountryDetails from "../components/countryDetails";
 import{ThemeContext} from '../themes/themes-context'
+import ApiRepository from "../repositories/ApiRepository";
 class ContainerCountryDetails extends Component {
   state = {
     country: [],
@@ -17,16 +18,10 @@ class ContainerCountryDetails extends Component {
   FecthData = async () => {
     try {
       let query = this.UseQuery();
-      const response = await fetch(
-        `https://restcountries.eu/rest/v2/alpha/${query.get("code")}`
-      );
-      const country = await response.json();
-
-      if (country.borders.length !== 0) {
-        const StringBorder = country.borders.reduce((a, b) => a.concat(";", b));
-        const { data: borders } = await axios.get(
-          `https://restcountries.eu/rest/v2/alpha?codes=${StringBorder}`
-        );
+      const { data: country} = await ApiRepository.getCountryByCode(query.get("code"));
+      if (country.borders && country.borders.length > 0) {
+        const StringBorders = country.borders.reduce((a, b) => a.concat(";", b));
+        const { data: borders } = await ApiRepository.getBordersCountryByCode(StringBorders);
         this.setState({
           country: country,
           borderCountries: borders,

@@ -6,6 +6,11 @@
   background-color: $WhiteText-DM_El-lM;
   padding: 10px 6em;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
   @include media390 {
     padding: 1.5em 0;
     justify-content: space-around;
