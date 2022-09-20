@@ -2,15 +2,22 @@ import ApiClient from './ApiClient';
 
 export default {
 
-  async getAllCountries() {
+  getAllCountries() {
     return ApiClient.get('/all')
   },
 
-  async getCountriesByRegion(region) {
+  getCountriesByRegion(region) {
      return ApiClient.get(`/region/${region}`)
   },
 
-  async getCountryByName(query) {
+  getCountryByName(query) {
     return ApiClient.get(`/name/${query}`)
-  }, 
+  },
+  getCountryByCode(code) {
+    return ApiClient.get(`/alpha/${code}`)
+  },
+  getBordersCountryByCode(border) {
+    return ApiClient.get(`/alpha/?codes=${border}`)
+  }
+
 }

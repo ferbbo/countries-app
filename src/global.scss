@@ -9,4 +9,9 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   color: $DarkBlueText_LM;
   margin: 0;
+  width: 100%;
+}
+html, body, #root {
+  height: 100%;
+
 }
