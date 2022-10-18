@@ -13,9 +13,9 @@ function Header(props) {
         className="header"
         style={{ backgroundColor: theme.theme.fontBackground }}
       >
-        <div className="logo-title">
-          <img src={logo} alt="logo-web" />
-          <h5 style={{ color: theme.theme.colortext }} id="title-header">
+        <div className="d-block d-md-flex align-items-center">
+          <img src={logo} alt="logo-web" className="logo" />
+          <h5 style={{ color: theme.theme.colortext }} id="title" className="title">
             Where in the world?
           </h5>
         </div>

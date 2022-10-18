@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "../public"),
+    path: path.resolve(__dirname, "../dist"),
   },
   devServer: {
     open: true,
@@ -52,10 +52,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: "./src/index.html",
     }),
   ],
-  devServer: {
-		historyApiFallback: true,
-	}
 };

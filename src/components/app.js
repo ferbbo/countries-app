@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState } from "react";
-import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { themes, ThemeContext } from "../themes/themes-context";
 import "../global.scss";
 import Loading from './loading'

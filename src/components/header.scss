@@ -16,17 +16,13 @@
     justify-content: space-around;
     padding: 1.5em 1em;
   }
-  .logo-title {
-    img {
-      width: 100px;
-    }
-    display: flex;
-    align-items: center;
-    @include media390 {
-      display: block;
-    }
+
+
+  .logo {
+    width: 100px;
+    height: 46px;
   }
-  h5 {
+  .title {
     font-weight: 800;
     margin: 0 0 0 20px;
     color: $DarkBlueEl_DM;

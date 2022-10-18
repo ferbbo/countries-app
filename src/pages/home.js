@@ -9,11 +9,20 @@ import AlertModal from "../components/AlertModal";
 import ApiRepository from '../repositories/ApiRepository';
 import "./home.scss";
 class Home extends Component {
+
   state = {
     countries: [],
-  };
+    countriesPerPage: [],
+    perCountry: 8,
+  }
+  
   componentDidMount() {
     this.FecthData();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.countries.length !== this.state.countries.length ) {
+      this.getCountriesPerPage(this.state.countries);
+    }
   }
 
   //fetch all Countries
@@ -22,6 +31,7 @@ class Home extends Component {
     try {
       const { data } = await ApiRepository.getAllCountries();
       this.setState({ countries: data });
+
     } catch (error) {
       console.error(error);
     }
@@ -39,6 +49,17 @@ class Home extends Component {
       console.error(error);
     }
   };
+  getCountriesPerPage(countries) {
+    const perPage = this.state.countriesPerPage.length;
+    if (countries.length) {
+      const payload = countries.slice(perPage, this.state.perCountry);
+      this.setState((prev) => ({
+        countriesPerPage: [...prev.countriesPerPage , ...payload],
+        perCountry: prev.perCountry + 8,
+      }))
+    }
+
+  }
 
   render() {
     let { theme } = this.context;
@@ -49,7 +70,7 @@ class Home extends Component {
       >
         <Search theme={theme} />
         <RegionList handleRegion={this.FetchRegions} theme={theme} />
-        <Countries countries={this.state.countries} theme={theme} />
+        <Countries countries={this.state.countriesPerPage} theme={theme} />
         <AlertModal/>
       </div>
     );
