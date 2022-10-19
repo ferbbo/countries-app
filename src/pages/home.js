@@ -15,13 +15,22 @@ class Home extends Component {
     countriesPerPage: [],
     perCountry: 8,
   }
-  
+
+  handleObserver = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      setTimeout(() => this.getCountriesPerPage() , 500);
+    }
+  }
   componentDidMount() {
+    const loader = document.querySelector('div#loader');
+    const observer = new IntersectionObserver(this.handleObserver, { root: null, threshold: 0 });
+    if (loader) observer.observe(loader);
     this.FecthData();
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.countries.length !== this.state.countries.length ) {
-      this.getCountriesPerPage(this.state.countries);
+      this.getCountriesPerPage();
     }
   }
 
@@ -51,8 +60,8 @@ class Home extends Component {
   };
   getCountriesPerPage(countries) {
     const perPage = this.state.countriesPerPage.length;
-    if (countries.length) {
-      const payload = countries.slice(perPage, this.state.perCountry);
+    if (this.state.countries.length) {
+      const payload = this.state.countries.slice(perPage, this.state.perCountry);
       this.setState((prev) => ({
         countriesPerPage: [...prev.countriesPerPage , ...payload],
         perCountry: prev.perCountry + 8,
@@ -72,6 +81,7 @@ class Home extends Component {
         <RegionList handleRegion={this.FetchRegions} theme={theme} />
         <Countries countries={this.state.countriesPerPage} theme={theme} />
         <AlertModal/>
+        <div id="loader" className="px-5 mt-3 w-100 text-center">...loading</div>
       </div>
     );
   }

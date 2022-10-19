@@ -6,14 +6,16 @@
   grid-template-areas:
     "search  regions"
     "country   country "
-    "countries countries";
+    "countries countries"
+    "loading   loading";
   grid-template-columns: 1fr 1fr;
   @include media594 {
     grid-template-areas:
       "search  "
       "regions "
       "country    "
-      "countries";
+      "countries"
+      "loading";
     grid-template-columns: 1fr;
     margin: 0;
     padding: 40px 15px;
@@ -29,5 +31,8 @@
         width: 250px;
       }
     }
+  }
+  #loader {
+    grid-area: loading;
   }
 }
