@@ -1,11 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext  } from "react";
 import Header from "../components/header";
+import { ThemeContext } from "../themes/themes-context";
 
 function Layout(props) {
+  const { theme } = useContext(ThemeContext);
   return (
     <Fragment>
       <Header />
-      {props.children}
+      <div
+        style={{ backgroundColor: theme.background }}
+        className="full-section">
+        {props.children}
+      </div>
     </Fragment>
   );
 }

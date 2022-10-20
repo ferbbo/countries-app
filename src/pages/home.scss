@@ -1,6 +1,6 @@
 @import "../config.scss";
 .container_home {
-  min-height: calc(100% - 80px);
+  min-height: 100vh;
   padding: 100px 50px 40px;
   display: grid;
   grid-template-areas:
@@ -9,6 +9,7 @@
     "countries countries"
     "loading   loading";
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr  50px;
   @include media594 {
     grid-template-areas:
       "search  "

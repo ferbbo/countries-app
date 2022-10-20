@@ -5,6 +5,7 @@ import Search from "../components/Search";
 import RegionList from "../components/regionList";
 import Countries from "../components/countries";
 import AlertModal from "../components/AlertModal";
+import LoadingScroll from '../components/loadingScroll';
 
 import ApiRepository from '../repositories/ApiRepository';
 import "./home.scss";
@@ -13,7 +14,7 @@ class Home extends Component {
   state = {
     countries: [],
     countriesPerPage: [],
-    perCountry: 8,
+    perCountry: 12,
   }
 
   handleObserver = (entries) => {
@@ -58,7 +59,7 @@ class Home extends Component {
       console.error(error);
     }
   };
-  getCountriesPerPage(countries) {
+  getCountriesPerPage() {
     const perPage = this.state.countriesPerPage.length;
     if (this.state.countries.length) {
       const payload = this.state.countries.slice(perPage, this.state.perCountry);
@@ -73,16 +74,18 @@ class Home extends Component {
   render() {
     let { theme } = this.context;
     return (
-      <div
-        style={{ backgroundColor: theme.background }}
-        className="container_home container mt-1"
-      >
-        <Search theme={theme} />
-        <RegionList handleRegion={this.FetchRegions} theme={theme} />
-        <Countries countries={this.state.countriesPerPage} theme={theme} />
-        <AlertModal/>
-        <div id="loader" className="px-5 mt-3 w-100 text-center">...loading</div>
-      </div>
+        <div
+          
+          className="container_home container mt-1"
+        >
+          <Search theme={theme} />
+          <RegionList handleRegion={this.FetchRegions} theme={theme} />
+          <Countries countries={this.state.countriesPerPage} theme={theme} />
+          <AlertModal/>
+          <div id="loader" className="px-5 mt-3 w-100 text-center">
+            <LoadingScroll/>
+          </div>
+        </div>
     );
   }
 }
