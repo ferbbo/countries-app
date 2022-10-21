@@ -9,7 +9,7 @@ const ContainerCountryDetails = lazy(() =>
 );
 import Layout from "../components/layout";
 
-function App(props) {
+function App() {
   const [theme, setTheme] = useState(themes.light);
 
   const ToogleTheme = () => {

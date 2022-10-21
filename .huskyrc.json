@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit":"npx validate-branch-name",
+    "pre-push": "npm run lint"
+  }
+}

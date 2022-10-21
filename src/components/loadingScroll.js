@@ -5,7 +5,7 @@ function Loading() {
   const { theme } = useContext(ThemeContext);
   return (
     <div
-      class="lds-ellipsis">
+      className="lds-ellipsis">
       <div style={{ backgroundColor: theme.loadingBackground }}></div>
       <div style={{ backgroundColor: theme.loadingBackground }}></div>
       <div style={{ backgroundColor: theme.loadingBackground }}></div>
