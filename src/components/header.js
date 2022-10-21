@@ -4,7 +4,7 @@ import "../components/header.scss";
 import { ThemeContext } from "../themes/themes-context";
 import logo from "../images/logoFlags.png";
 
-function Header(props) {
+function Header() {
   const theme = useContext(ThemeContext);
   return (
     <Fragment>

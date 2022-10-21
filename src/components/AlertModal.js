@@ -25,7 +25,7 @@ const AlertModal = () => {
                 />
               </figure>
               <h1 className="modal-title text-center">Upps...!</h1>
-              <h6 className="text-center">We didn't have find nothing! </h6>
+              <h6 className="text-center">We didn&apos;t have find nothing! </h6>
             </div>
             <div className="modal-footer">
               <button

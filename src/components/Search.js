@@ -30,20 +30,16 @@ const InputSearch = (props) =>  {
           setCountry(country);
         } catch (e) {
           if (e.status === 404) {
+            // eslint-disable-next-line no-undef
             $("#alert-search").modal({
               show: true,
             });
           }
           console.error(e);
         }
-        if (error) {
-          
-        }
-      } else {
-       
       }
     }
-  };
+  }
 
   useEffect(() => {
     if (query.length === 0) {
@@ -101,5 +97,4 @@ const InputSearch = (props) =>  {
     </Fragment>
   );
 }
-
 export default InputSearch;
