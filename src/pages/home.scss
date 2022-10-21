@@ -9,7 +9,6 @@
     "countries countries"
     "loading   loading";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr  50px;
   @include media594 {
     grid-template-areas:
       "search  "
