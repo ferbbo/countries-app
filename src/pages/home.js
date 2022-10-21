@@ -23,15 +23,21 @@ class Home extends Component {
       setTimeout(() => this.getCountriesPerPage() , 500);
     }
   }
-  componentDidMount() {
+  observer = new IntersectionObserver(this.handleObserver, { root: null, threshold: 0 });
+
+  async componentDidMount() {
+    await this.FecthData();
     const loader = document.querySelector('div#loader');
-    const observer = new IntersectionObserver(this.handleObserver, { root: null, threshold: 0 });
-    if (loader) observer.observe(loader);
-    this.FecthData();
+    if (loader) this.observer.observe(loader);
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.countries.length !== this.state.countries.length ) {
       this.getCountriesPerPage();
+    }
+    if (this.state.countriesPerPage.length >= this.state.countries.length) {
+      const loader = document.querySelector('div#loader');
+      loader.classList.add('d-none');
+      this.observer.unobserve(loader);
     }
   }
 
