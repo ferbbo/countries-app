@@ -1,3 +1,7 @@
+
+const AUTOPREFIXER = require('autoprefixer');
+const PRE_CSS = require("precss");
+
 module.exports = {
-  plugins: [require("autoprefixer"), require("precss")],
+  plugins: [ AUTOPREFIXER, PRE_CSS]
 };

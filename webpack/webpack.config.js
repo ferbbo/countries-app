@@ -1,15 +1,28 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CssMiniExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 const path = require("path");
+
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CssMiniExtractPlugin = require('mini-css-extract-plugin');
+
+
+const shouldAnalyze = process.argv.includes('--analyze');
+const extraPlugins = []
+if (shouldAnalyze) { 
+  extraPlugins.push( new BundleAnalyzerPlugin());
+}
+
 module.exports = {
   entry: { app: "./src/index.js" },
   output: {
-    filename: "[name].[hash].js",
+    filename: "[name].js",
     chunkFilename: "[name].bundle.js",
-    path: path.resolve(__dirname, "../public"),
+    path: path.resolve(__dirname, "../dist"),
   },
   mode: "production",
+  
   module: {
     rules: [
       {
@@ -52,7 +65,7 @@ module.exports = {
       },
     }),
     new CssMiniExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename: "[name].css",
     }),
   ],
 };

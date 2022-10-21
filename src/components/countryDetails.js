@@ -16,7 +16,7 @@ function CountryDetails(props) {
    >
       <div className="w-100">
         <button 
-        style={{backgroundColor:props.theme.fontBackground, color:props.colortext}}
+        style={{backgroundColor:props.theme.fontBackground, color:props.theme.colortext}}
         className="btn-goBack" onClick={history.goBack}>
           <i 
           style={{color: props.theme.colortext}}

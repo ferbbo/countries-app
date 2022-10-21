@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import CountryDetails from "../components/countryDetails";
 import{ThemeContext} from '../themes/themes-context'
 import ApiRepository from "../repositories/ApiRepository";
