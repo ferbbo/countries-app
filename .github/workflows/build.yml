@@ -1,4 +1,4 @@
-name: 'Desployment in master branch'
+name: 'Build in master branch'
 
 on: 
   push:
@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
+      - name: cancel Previus redundant build
+        uses: styfle/cancel-workflow-action
+        with:
+          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
