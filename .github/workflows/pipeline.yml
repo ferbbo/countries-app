@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
@@ -17,8 +17,6 @@ jobs:
           node-version: 14
       - name: 'install dependencies'
         run: npm install
-      - name: 'Linter code'
-        run: npm run lint
       - name: 'Build'
         run: npm run build:start
 
