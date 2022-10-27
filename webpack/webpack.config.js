@@ -15,11 +15,11 @@ if (shouldAnalyze) {
 }
 
 module.exports = {
-  entry: { app: "./src/index.js" },
+  entry: "./src/index.js",
   output: {
-    filename: "[name].js",
-    chunkFilename: "[name].bundle.js",
+    filename: "main.js",
     path: path.resolve(__dirname, "../dist"),
+    clean: true,
   },
   mode: "production",
   
@@ -65,7 +65,7 @@ module.exports = {
       },
     }),
     new CssMiniExtractPlugin({
-      filename: "[name].css",
+      filename: "main.css",
     }),
   ],
 };
