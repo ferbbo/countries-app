@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
+import ThemeContext from "../themes/themes-context";
 import "./loading.scss";
-import { ThemeContext } from "../themes/themes-context";
 function Loading() {
   const { theme } = useContext(ThemeContext);
   return (

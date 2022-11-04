@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../themes/themes-context";
+import ThemeContext  from "../themes/themes-context";
 import "./loadingScroll.scss";
 function Loading() {
   const { theme } = useContext(ThemeContext);
