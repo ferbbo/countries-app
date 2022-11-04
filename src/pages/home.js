@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ThemeContext } from "../themes/themes-context";
+import ThemeContext from "../themes/themes-context";
 
 import Search from "../components/Search";
 import RegionList from "../components/regionList";

@@ -1,6 +1,6 @@
 import React, { Fragment, useContext  } from "react";
 import Header from "../components/header";
-import { ThemeContext } from "../themes/themes-context";
+import ThemeContext  from "../themes/themes-context";
 
 function Layout(props) {
   const { theme } = useContext(ThemeContext);

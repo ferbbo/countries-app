@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CountryDetails from "../components/countryDetails";
-import{ThemeContext} from '../themes/themes-context'
+import ThemeContext from '../themes/themes-context'
 import ApiRepository from "../repositories/ApiRepository";
 class ContainerCountryDetails extends Component {
   state = {
@@ -38,7 +38,7 @@ class ContainerCountryDetails extends Component {
   render() {
     const country = this.state.country;
     let code = this.UseQuery();
-    let {theme} = this.context
+    let { theme } = this.context
     const borderCountries = this.state.borderCountries;
     if (country.length === 0) {
       return null;

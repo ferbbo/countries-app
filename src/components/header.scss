@@ -26,6 +26,7 @@
     font-weight: 800;
     margin: 0 0 0 20px;
     color: $DarkBlueEl_DM;
+    opacity: .8;
     @include media390 {
       font-size: 1.2em;
       margin: 0;
